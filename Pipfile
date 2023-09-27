@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 fastapi = "*"
 uvicorn = {extras = ["standard"], version = "*"}
+requests = "*"
+fastapi-pagination = "*"
 
 [dev-packages]
 
