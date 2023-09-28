@@ -17,7 +17,7 @@ def read_all():
 @app.get("/votacao/{ano}")
 def read_votacoes_por_ano(ano: int):
 
-    filtro = filter(lambda x: datetime.strptime(x.data_votacao, "%Y-%m-%d").year == ano, data)
+    filtro = filter(lambda x: datetime.strptime(x.data_votacao, "%d/%m/%Y").year == ano, data)
     return list(filtro)
 
 @app.get("/votos/{id_senador}")
