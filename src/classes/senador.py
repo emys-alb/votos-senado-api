@@ -13,3 +13,6 @@ class Senador:
     
     def get_id(self):
         return self.id_senador
+    
+    def get_nome(self):
+        return self.nome

@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+import re
 
 @dataclass
 class Votacao:
@@ -14,3 +15,7 @@ class Votacao:
     @classmethod
     def from_dict(cls, values):
         return cls(**values)
+    
+    def get_id_votacao(url: str):
+        id = re.search(pattern= "\d*$", string=url).group(0)
+        return id

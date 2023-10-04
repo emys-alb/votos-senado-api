@@ -2,7 +2,7 @@ import csv
 import json
 import requests
 
-from classes.Votacao import Votacao
+from src.classes.votacao import Votacao
 
 
 def csv_to_json(csv_file):
@@ -14,6 +14,7 @@ def csv_to_json(csv_file):
             json_array.append(Votacao.from_dict(dict(item)))
         
         return json_array
+
 
 def get_lista_senadores():
     url_dados_abertos = "https://legis.senado.leg.br/dadosabertos/arquivos/ListaParlamentarEmExercicio.json?_gl=1*1jg0a97*_ga*MTA0MTgwMDY0OS4xNjc5NTkwMTgx*_ga_CW3ZH25XMK*MTY5NjExMDk2NS4yMS4xLjE2OTYxMTA5NzAuMC4wLjA."
@@ -30,6 +31,15 @@ def get_id(nome: str):
     senadores = get_lista_senadores()
     id = 0
     for senador in senadores:
-        if senador["IdentificacaoParlamentar"]["NomeParlamentar"].trim().lower() == nome or senador["IdentificacaoParlamentar"]["NomeCompletoParlamentar"].trim().lower() == nome:
+        if senador["IdentificacaoParlamentar"]["NomeParlamentar"].strip().lower() == nome or senador["IdentificacaoParlamentar"]["NomeCompletoParlamentar"].strip().lower() == nome:
             return senador["IdentificacaoParlamentar"]["CodigoParlamentar"]
     return id
+
+
+def get_nome_from_id(id: str):
+    senadores = get_lista_senadores()
+    for senador in senadores:
+        if senador["IdentificacaoParlamentar"]["CodigoParlamentar"] == id:
+            return senador["IdentificacaoParlamentar"]["NomeParlamentar"].strip().lower()
+    
+    return ""
