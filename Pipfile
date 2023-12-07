@@ -8,6 +8,7 @@ fastapi = "*"
 uvicorn = {extras = ["standard"], version = "*"}
 requests = "*"
 fastapi-pagination = "*"
+gunicorn = "*"
 
 [dev-packages]
 
