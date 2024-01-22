@@ -4,7 +4,7 @@ from fastapi_pagination import Page, paginate, add_pagination
 
 from datetime import datetime
 
-from src.get_data import csv_to_json, get_nome_from_id
+from src.get_data import csv_to_json, get_nome_from_id, get_all_nomes
 from src.classes.votacao import Votacao
 from src.classes.senador import Senador
 
@@ -43,6 +43,11 @@ def read_votos_senador_votacao(id_votacao: str, id_senador: str, nome_senador: O
     filtro = filter(lambda x: x.parlamentar.lower() == nome_senador, votacoes)
 
     return paginate(list(filtro))
+
+@app.get("/senadores", response_model=Page[Senador])
+def read_todos_senadores():
+    senadores = get_all_nomes()
+    return paginate(list(senadores))
 
 @app.get("/votos/votacao={id_votacao}", response_model=Page[Votacao])
 def read_votos_por_votacao(id_votacao: str):

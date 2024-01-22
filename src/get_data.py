@@ -35,6 +35,8 @@ def get_id(nome: str):
             return senador["IdentificacaoParlamentar"]["CodigoParlamentar"]
     return id
 
+def get_all_nomes():
+    return get_lista_senadores()
 
 def get_nome_from_id(id: str):
     senadores = get_lista_senadores()
