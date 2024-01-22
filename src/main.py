@@ -14,8 +14,9 @@ app = FastAPI()
 add_pagination(app)
 
 @app.get("/votacao/", response_model=Page[Votacao])
-def read_votacoes_por_data(data_inicio: str, data_fim: Optional[str] = None):
-    date_format = "%d/%m/%Y"
+def read_votacoes_por_data(data_inicio: str, data_fim: Optional[str] = None, formato_data: Optional[str] = None):
+    date_format = "%d/%m/%Y" if formato_data is None else formato_data
+    
     data_inicio = datetime.strptime(data_inicio, date_format)
     data_fim = datetime.now() if data_fim is None else datetime.strptime(data_fim, date_format)
 
