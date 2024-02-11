@@ -23,8 +23,7 @@ python paginas.py
 
 #check if new file is empty
 cd ../out/
-wc -c < "$filename"
 
-if [ ! -s "$filename" ]; then
-echo "The file $filename is empty."
+if [ ! -s "$filename" ]; 
+then rm $filename
 fi
