@@ -8,7 +8,7 @@ from src.get_data import csv_to_json, get_nome_from_id, get_all_nomes
 from src.classes.votacao import Votacao
 from src.classes.senador import Senador
 
-data = csv_to_json("data/data.csv")
+data = csv_to_json("data/votos.csv")
 
 app = FastAPI()
 add_pagination(app)

@@ -18,3 +18,7 @@ pipenv install
 
 #run the spider
 cd scrapper/ & python paginas.py
+
+#update data for the api
+cd ../../
+cp votos-senado/out/votos.csv ./data/votos.csv
