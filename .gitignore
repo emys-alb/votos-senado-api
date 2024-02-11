@@ -4,6 +4,9 @@ __pycache__/
 *$py.class
 .vscode
 
+#scrapper
+votos-senado/
+
 # C extensions
 *.so
 

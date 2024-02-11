@@ -1,23 +1,30 @@
 #!/bin/bash
 
-# get date time
-datetime=$(date '+%m_%d_%Y_%H_%M_%S')
-today=$(date  "+%d/%m/%Y")
-last_monday=$(date -d 'last-monday' '+%d/%m/%Y')
-
 #get scrapper folder
 git clone "https://github.com/emys-alb/votos-senado"
 cd votos-senado/
 
 pipenv shell
+pipenv install
 
-#define enviroment variable
+# get date time
+datetime=$(date '+%m_%d_%Y_%H_%M_%S')
+today=$(date "+%d/%m/%Y")
+last_monday=$(date -d 'last-monday' '+%d/%m/%Y')
+filename="novosvotos.csv"
+
+#define and update enviroment variable
 cp .env.sample .env
-filename="out/novosvotos.csv"
-
-export FILENAME=S(filename) INIT_DATE=$(last_monday) LAST_DATE=$(today)
-
-cd scrapper/
+echo -e FILENAME=$filename '\n'INIT_DATE=$last_monday '\n'FINISH_DATE=$today > .env
 
 #run the spider
-python scrapper.paginas.py
+cd scrapper/
+python paginas.py
+
+#check if new file is empty
+cd ../out/
+wc -c < "$filename"
+
+if [ ! -s "$filename" ]; then
+echo "The file $filename is empty."
+fi
