@@ -34,7 +34,7 @@ def read_votos_senador(nome_senador: Optional[str] = None, id_senador: Optional[
     filtro = filter(lambda x:  x.parlamentar.strip().lower() == nome_senador, data)
     return paginate(list(filtro))
 
-@app.get("/votos/{id_votacao}/{id_senador}", response_model=Page[Votacao])
+@app.get("/votos-por-senador/{id_senador}/em-votacao/{id_votacao}", response_model=Page[Votacao])
 def read_votos_senador_votacao(id_votacao: str, id_senador: str, nome_senador: Optional[str] = None):
     filtro_votacao = filter(lambda x: Votacao.get_id_votacao(x.link) == id_votacao, data)
     if nome_senador is None:
@@ -50,7 +50,7 @@ def read_todos_senadores():
     senadores = get_all_nomes()
     return paginate(list(senadores))
 
-@app.get("/votos/votacao={id_votacao}", response_model=Page[Votacao])
+@app.get("/votos-em-votacao/id_votacao/", response_model=Page[Votacao])
 def read_votos_por_votacao(id_votacao: str):
     filtro_votacao = filter(lambda x: Votacao.get_id_votacao(x.link) == id_votacao, data)
     return paginate(list(filtro_votacao))
