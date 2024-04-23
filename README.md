@@ -1,8 +1,9 @@
 # votos-senado-api
 
 ## Como rodar o servidor localmente 💻
+
 Para rodar o servidor, basta instalar as dependencias que estão no [Pipfile](./Pipfile) usando ``pipenv install`` em seguida rode e é esperado o seguinte resultado:
-    
+
     pipenv shell
     uvicorn src.main:app --reload
 
@@ -12,9 +13,8 @@ Para rodar o servidor, basta instalar as dependencias que estão no [Pipfile](./
     INFO:     Waiting for application startup.
     INFO:     Application startup complete.
 
-
 ## Como acessar o front-end localmente 📲
 
-Enquanto estiver rodando a API localmente, acesse: http://127.0.0.1:8000/docs#/
+Enquanto estiver rodando a API localmente, acesse: <http://127.0.0.1:8000/docs#/>
 
 ![Resultado esperado](image.png)

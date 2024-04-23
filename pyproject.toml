@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "votos-senado-api"
+version = "0.1.0"
+description = ""
+authors = ["emys-alb <emilly.oliveira@ccc.ufcg.edu.br>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "0.109.0"
+uvicorn = {extras = ["standard"], version = "^0.29.0"}
+annotated-types = "0.6.0"
+anyio = "4.2.0"
+click = "8.1.7"
+exceptiongroup = "1.2.0"
+h11 = "0.14.0"
+idna = "3.6"
+pydantic = "2.5.3"
+pydantic-core = "2.14.6"
+sniffio = "1.3.0"
+starlette = "0.35.1"
+typing-extensions = "4.9.0"
+certifi = "2023.11.17"
+charset-normalizer = "3.3.2"
+fastapi-pagination = "0.12.14"
+gunicorn = "21.2.0"
+httptools = "0.6.1"
+packaging = "23.2"
+python-dotenv = "1.0.0"
+pyyaml = "6.0.1"
+requests = "2.31.0"
+urllib3 = "2.1.0"
+uvloop = "0.19.0"
+watchfiles = "0.21.0"
+websockets = "12.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
