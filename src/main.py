@@ -20,7 +20,7 @@ def read_votacoes_por_data(data_inicio: str, data_fim: Optional[str] = None, for
     data_inicio = datetime.strptime(data_inicio, date_format)
     data_fim = datetime.now() if data_fim is None else datetime.strptime(data_fim, date_format)
 
-    filtro = filter(lambda x: data_inicio <= datetime.strptime(x.data_votacao, datetime) <= data_fim, data)
+    filtro = filter(lambda x: data_inicio <= datetime.strptime(x.data_votacao, "%d/%m/%Y") <= data_fim, data)
     return paginate(list(filtro))
 
 @app.get("/votos/", response_model=Page[Votacao])
